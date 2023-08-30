@@ -15,10 +15,12 @@ body, h1, h2, h3, p {
 }
 
 .middle-space {
-    width: 20%; /* Largura do espaço vazio no meio */
+    width: 100%; /* Largura do espaço vazio no meio */
+    display: flex; /* Adicione display flex para centralizar as cartas */
+    justify-content: center; /* Centralizar horizontalmente */
+    align-items: center; /* Centralizar verticalmente */
     margin: 100px 0; /* Adicione margem ao espaço vazio */
 }
-
 .player-area, .cpu-area {
     width: 40%;
     padding: 20px;
@@ -53,7 +55,6 @@ body, h1, h2, h3, p {
     font-weight: bold;
     color: #e74c3c;
 }
-
 
 .player-cards, .cpu-cards {
     display: flex;
@@ -97,6 +98,8 @@ body, h1, h2, h3, p {
     transform: translate(-50%, -50%) scale(1.2); /* Mantém a imagem centralizada */
 }
 
+
+
 /* Estilos para as informações de vida */
 #player-life, #cpu-life {
     font-weight: bold;
@@ -110,4 +113,3 @@ body, h1, h2, h3, p {
         margin: 0 auto;
     }
 }
-

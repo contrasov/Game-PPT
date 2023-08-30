@@ -1,0 +1,113 @@
+/* Reset de estilos básicos */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos gerais para o jogo */
+.game-container {
+    display: flex;
+    flex-direction: column; /* Organizar verticalmente */
+    justify-content: center; /* Centralizar verticalmente */
+    align-items: center; /* Centralizar horizontalmente */
+    height: 90vh;
+    background-color: #f0f0f0;
+}
+
+.middle-space {
+    width: 20%; /* Largura do espaço vazio no meio */
+    margin: 100px 0; /* Adicione margem ao espaço vazio */
+}
+
+.player-area, .cpu-area {
+    width: 40%;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 0 10px;
+}
+
+.player-info, .cpu-info {
+    font-size: 24px; /* Tamanho grande */
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.player-life {
+    position: absolute;
+    bottom: 100px; /* Ajuste a posição vertical */
+    left: calc(50% + 400px); /* Ajuste a posição horizontal */
+    font-size: 30px; /* Tamanho grande */
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.cpu-info{
+    position: absolute;
+    bottom: 500px; /* Ajuste a posição vertical */
+    left: calc(50% + -550px); /* Ajuste a posição horizontal */
+    font-size: 30px; /* Tamanho grande */
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+
+.player-cards, .cpu-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Estilos para as cartas */
+.card {
+    width: 80px;
+    height: 120px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    position: relative; /* Adicione posição relativa para controlar o zoom */
+}
+
+.card:hover {
+    transform: scale(2) rotate(3deg); /* Aumenta a escala da carta ao passar o mouse */
+    z-index: 2;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    max-width: 100%; /* Adicione isso para garantir que a imagem não fique maior que a carta */
+}
+
+.card:hover img {
+    transform: translateY(-50%); /* Efeito de levantar a carta ao passar o mouse */
+    position: absolute; /* Posicione a imagem sobreposta à carta */
+    top: 50%;
+    left: 50%;
+    width: 120%; /* Aumenta o tamanho da imagem */
+    height: 120%; /* Aumenta o tamanho da imagem */
+    transform: translate(-50%, -50%) scale(1.2); /* Mantém a imagem centralizada */
+}
+
+/* Estilos para as informações de vida */
+#player-life, #cpu-life {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .player-area, .cpu-area {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+

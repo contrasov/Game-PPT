@@ -22,7 +22,7 @@ function createCard(type, number) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.setAttribute('data-type', type);
-    card.innerHTML = `<img src="./src/cartas/${type} ${number}.png" alt="Carta ${type} ${number}" style="width: 80px; height: 120px;">`;
+    card.innerHTML = `<img src="./src/cartas/${type} ${number}.png" alt="Carta ${type} ${number}" style="width: 160px; height: 240px;">`;
     return card;
 }
 

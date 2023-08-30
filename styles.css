@@ -109,9 +109,8 @@ body, h1, h2, h3, p {
 }
 
 .winner-card {
-    border: 2px solid green; /* ou a cor que você preferir */
+    animation: rainbow-border 4s linear infinite;
 }
-
 .history {
     position: absolute;
     bottom: 0;
@@ -153,5 +152,16 @@ body {
 #player-life, #cpu-life {
     font-weight: bold;
     color: #e74c3c;
+}
+
+@keyframes rainbow-border {
+    0% { border: 2px solid red; }
+    14% { border: 2px solid orange; }
+    28% { border: 2px solid yellow; }
+    42% { border: 2px solid green; }
+    57% { border: 2px solid blue; }
+    71% { border: 2px solid indigo; }
+    85% { border: 2px solid violet; }
+    100% { border: 2px solid red; }
 }
 

@@ -22,7 +22,7 @@ function createCard(type, number) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.setAttribute('data-type', type);
-    card.innerHTML = `<img src="./src/cartas/${type} ${number}.png" alt="Carta ${type} ${number}" style="width: 160px; height: 240px;">`;
+    card.innerHTML = `<img src="./src/cartas/${type} ${number}.png" alt="Carta ${type} ${number}" style="width: 70px; height: 100px;">`;
     return card;
 }
 
@@ -63,6 +63,32 @@ function compareCards(playerCardType, cpuCardType) {
     }
 }
 
+
+function updateHistory(playerCardType, cpuCardType, playerCardNumber, cpuCardNumber) {
+    const historyCardsElement = document.querySelector('.history-cards');
+
+    const historyContainer = document.createElement('div');
+    historyContainer.classList.add('history-container');
+
+    const middleCards = middleSpaceElement.querySelectorAll('.card'); // Seleciona as cartas jogadas no meio
+
+    const playerMiddleCardClone = middleCards[1].cloneNode(true); // Clone da carta do jogador
+    const cpuMiddleCardClone = middleCards[0].cloneNode(true); // Clone da carta da CPU
+
+    historyContainer.appendChild(cpuMiddleCardClone);
+    historyContainer.appendChild(playerMiddleCardClone);
+
+
+    historyCardsElement.prepend(historyContainer);
+
+    // Limitar o número de jogadas no histórico (mantendo apenas as 3 últimas)
+    const historyContainers = historyCardsElement.querySelectorAll('.history-container');
+    if (historyContainers.length > 3) {
+        historyCardsElement.removeChild(historyContainers[historyContainers.length - 1]);
+    }
+}
+
+
 function playRound(playerCard) {
     const cpuCardTypeRound = cardTypes[Math.floor(Math.random() * cardTypes.length)];
     const cpuCardNumber = Math.floor(Math.random() * 5) + 1;
@@ -81,9 +107,21 @@ function playRound(playerCard) {
     } else if (result === 'cpu') {
         playerLife--;
     }
+
+    const allCards = [...middleSpaceElement.querySelectorAll('.card')];
+    allCards.forEach(card => card.classList.remove('winner-card'));
+
+    if (result === 'player') {
+        cpuLife--;
+        playerCard.classList.add('winner-card'); // Adicione a classe à carta ganhadora
+    } else if (result === 'cpu') {
+        playerLife--;
+        cpuCard.classList.add('winner-card'); // Adicione a classe à carta ganhadora
+    }
     
     updatePlayerLife();
     updateCpuLife();
+    updateHistory(playerCardType, cpuCardType); // Atualiza o histórico
 
     // Adicionar a carta jogada à área de cartas jogadas
     addPlayedCard(playerCardType, playerCard.getAttribute('data-number'));
@@ -116,4 +154,7 @@ function initGame() {
     });
 }
 
+
+
 initGame();
+

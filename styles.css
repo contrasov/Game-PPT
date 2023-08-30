@@ -10,20 +10,21 @@ body, h1, h2, h3, p {
     align-items: center;
     height: 100vh;
     box-sizing: border-box;
-    position: relative; /* Adicione esta linha */
+    position: relative; 
 }
 
 .middle-space {
     width: 100%; 
     display: flex; 
-    justify-content: center; 
+    justify-content: space-around; 
     align-items: center; 
-    margin: 100px 0;
-    flex-grow: 1;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 
 .player-life, .cpu-info {
+    font-family: "Outfit";
     font-size: 30px;
     font-weight: bold;
     color: #e74c3c;
@@ -32,38 +33,63 @@ body, h1, h2, h3, p {
 }
 
 .cpu-info {
-    left: 10px; /* Posicionamento da vida da CPU */
+    top: 20px;
+    left: 10px; 
 }
 
 .player-life {
-    right: 10px; /* Posicionamento da vida do jogador */
+    top: 20px;
+    right: 10px; 
 }
 
-.player-cards, .cpu-cards {
+.player-cards {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    max-width: 1000px; /* Definir uma largura máxima para as cartas */
-    margin-top: 20px; /* Espaço entre as cartas e as vidas */
+    max-width: 1000px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.cpu-cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1000px;;
+    margin-top: 0;
 }
 
 .card {
-    width: 140px; 
-    height: 200px; 
+    width: 70px; 
+    height: 100px; 
     background-color: #1b1b1b;
-    border: 2px solid #000; 
+    border: 1px solid #000; 
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease-in-out;
     position: relative;
-    perspective: 1000px;
+    perspective: 1000px;    
     transform-style: preserve-3d;
 }
 
+.cpu-cards:hover .card {
+    transform: none; 
+    z-index: initial; 
+    box-shadow: none; 
+}
+
+.cpu-cards:hover .card img {
+    transform: none;
+    position: static; 
+    width: auto; 
+    height: auto; 
+}
+
+
 .card:hover {
-    transform: scale(1.1) rotate(3deg); 
+    transform: scale(1.5) rotate(3deg); 
     z-index: 2;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -79,15 +105,49 @@ body, h1, h2, h3, p {
     left: 50%;
     width: 120%; 
     height: 120%; 
-    transform: translate(-50%, -50%) scale(1.2); 
+    transform: translate(-50%, -50%) scale(1.6); 
 }
 
+.winner-card {
+    border: 2px solid green; /* ou a cor que você preferir */
+}
 
+.history {
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.history-title {
+    font-family: "Outfit";
+    color: aliceblue;
+    font-weight: bold;
+    margin-bottom: 5px;
+    cursor: pointer; 
+}
+
+.history-cards {
+    display: flex;
+    flex-direction: column; 
+    gap: 5px;
+    max-height: 480px; 
+}
+
+.history-cards .history-container {
+    display: flex;
+    gap: 5px;
+}
 
 body {
-    background-color: #000000;    
+    background-color: #1b1b1b;    
     background-size: cover;
+    overflow: hidden;
+    transform-origin: top;
 }
 
 #player-life, #cpu-life {

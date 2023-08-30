@@ -14,14 +14,15 @@ body, h1, h2, h3, p {
 }
 
 .middle-space {
-    width: 100%; 
-    display: flex; 
-    justify-content: space-around; 
-    align-items: center; 
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin-top: auto;
     margin-bottom: auto;
+    flex-direction: column; /* Inverte a ordem vertical das cartas */
+    transform: translateY(50%); /* Ajusta a posição vertical */
 }
-
 
 .player-life, .cpu-info {
     font-family: "Outfit";
@@ -42,15 +43,6 @@ body, h1, h2, h3, p {
     right: 10px; 
 }
 
-.player-cards {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 1000px;
-    margin-top: auto;
-    margin-bottom: 0;
-}
-
 .cpu-cards {
     display: flex;
     justify-content: space-around;
@@ -59,9 +51,18 @@ body, h1, h2, h3, p {
     margin-top: 0;
 }
 
+.player-cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 200px;
+    margin-bottom: 0;
+}
+
 .card {
-    width: 70px; 
-    height: 100px; 
+    width: 80px; 
+    height: 110px; 
     background-color: #1b1b1b;
     border: 1px solid #000; 
     display: flex;
@@ -105,12 +106,19 @@ body, h1, h2, h3, p {
     left: 50%;
     width: 120%; 
     height: 120%; 
-    transform: translate(-50%, -50%) scale(1.6); 
+    transform: translate(-50%, -50%) scale(1.5); 
 }
+
+
 
 .winner-card {
     animation: rainbow-border 4s linear infinite;
 }
+
+.draw-card {
+    border: 2px solid rgb(255, 255, 255); /* ou a cor cinza que você preferir */
+}
+
 .history {
     position: absolute;
     bottom: 0;
@@ -119,7 +127,6 @@ body, h1, h2, h3, p {
     border-radius: 5px;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .history-title {
@@ -142,8 +149,62 @@ body, h1, h2, h3, p {
     gap: 5px;
 }
 
+.low-opacity {
+    opacity: 0.5; /* Ou o valor de opacidade desejado */
+}
+
+/* Estilos para o modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    border-radius: 6px;
+    background: linear-gradient(180deg, #15342D 0%, #000 100%);
+    max-width: 300px;
+    margin: auto;
+    margin-top: 20%;
+    padding: 35px 71px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Outfit";
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento vertical entre os elementos */
+}
+
+
+#play-again-button {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #1a1717;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#play-again-button:hover {
+    background: #15342d;
+}
+
 body {
-    background-color: #1b1b1b;    
+    background: linear-gradient(to bottom, black, #15342d);
     background-size: cover;
     overflow: hidden;
     transform-origin: top;
@@ -165,3 +226,16 @@ body {
     100% { border: 2px solid red; }
 }
 
+/* Adicione essas classes ao seu arquivo CSS */
+@keyframes zoomAndSlide {
+    0% {
+        transform: scale(1);
+        top: 0;
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        top: 50%;
+        opacity: 0;
+    }
+}

@@ -5,8 +5,8 @@ const cpuCardsElement = document.querySelector('.cpu-cards');
 const middleSpaceElement = document.querySelector('.middle-space');
 const playedCardsElement = document.querySelector('.played-cards');
 
-let playerLife = 6;
-let cpuLife = 6;
+let playerLife = 12;
+let cpuLife = 12;
 
 const cardTypes = ['Pedra', 'Papel', 'Tesoura'];
 
@@ -22,14 +22,14 @@ function createCard(type, number) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.setAttribute('data-type', type);
-    card.innerHTML = `<img src="./src/cartas/${type} ${number}.png" alt="Carta ${type} ${number}" style="width: 70px; height: 100px;">`;
+    card.innerHTML = `<img src="./src/cartas/${type} ${number}.png" alt="Carta ${type} ${number}" style="width: 80px; height: 110px;">`;
     return card;
 }
 
 function createCpuCard() {
     const card = document.createElement('div');
     card.classList.add('card');
-    card.innerHTML = `<img src="./src/cartas/fundo.png" alt="Carta Oculta" style="width: 80px; height: 120px;">`;
+    card.innerHTML = `<img src="./src/cartas/fundo.png" alt="Carta Oculta" style="width: 80px; height: 110px;">`;
     return card;
 }
 
@@ -86,6 +86,10 @@ function updateHistory(playerCardType, cpuCardType, playerCardNumber, cpuCardNum
     if (historyContainers.length > 3) {
         historyCardsElement.removeChild(historyContainers[historyContainers.length - 1]);
     }
+
+    if (historyContainers.length >= 3) {
+        historyContainers[2].classList.add('low-opacity');
+    }
 }
 
 
@@ -107,9 +111,9 @@ function playRound(playerCard) {
     } else if (result === 'cpu') {
         playerLife--;
     }
-
+    
     const allCards = [...middleSpaceElement.querySelectorAll('.card')];
-    allCards.forEach(card => card.classList.remove('winner-card'));
+    allCards.forEach(card => card.classList.remove('winner-card')); 
 
     if (result === 'player') {
         cpuLife--;
@@ -117,7 +121,12 @@ function playRound(playerCard) {
     } else if (result === 'cpu') {
         playerLife--;
         cpuCard.classList.add('winner-card'); // Adicione a classe à carta ganhadora
+    } else {
+        playerCard.classList.add('draw-card'); // Adicione a classe de empate à carta do jogador
+        cpuCard.classList.add('draw-card'); // Adicione a classe de empate à carta da CPU
     }
+
+    
     
     updatePlayerLife();
     updateCpuLife();
@@ -132,6 +141,21 @@ function addPlayedCard(type, number) {
     playedCardsElement.appendChild(playedCard);
 }
 
+function showWinnerModal() {
+    const modal = document.getElementById('winner-modal');
+    const winnerMessage = document.getElementById('winner-message');
+
+    if (playerLife > cpuLife) {
+        winnerMessage.textContent = 'Vencedor: Jogador';
+    } else if (cpuLife > playerLife) {
+        winnerMessage.textContent = 'Vencedor: CPU';
+    } else {
+        winnerMessage.textContent = 'Empate';
+    }
+
+    modal.style.display = 'block';
+}
+
 function initGame() {
     chooseRandomCards();
     updatePlayerLife();
@@ -142,6 +166,11 @@ function initGame() {
         cpuCardsElement.appendChild(card);
     }
 
+    const playAgainButton = document.getElementById('play-again-button');
+    playAgainButton.addEventListener('click', () => {
+        location.reload(); // Recarrega a página
+    });
+
     playerCardsElement.addEventListener('click', (event) => {
         const clickedCard = event.target.closest('.card');
         if (clickedCard && clickedCard.parentElement === playerCardsElement) {
@@ -149,6 +178,9 @@ function initGame() {
             const cpuCards = cpuCardsElement.querySelectorAll('.card');
             if (cpuCards.length > 0) {
                 cpuCardsElement.removeChild(cpuCards[0]);
+            }
+            if (playerCardsElement.childElementCount === 0 && cpuCardsElement.childElementCount === 0) {
+                showWinnerModal();
             }
         }
     });

@@ -241,6 +241,7 @@ body, h1, h2, h3, p {
     opacity: 0.2; /* Ou o valor de opacidade desejado */
 }
 
+
 /* Estilos para o modal */
 .modal {
     display: none;

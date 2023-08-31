@@ -5,8 +5,8 @@ const cpuCardsElement = document.querySelector('.cpu-cards');
 const middleSpaceElement = document.querySelector('.middle-space');
 const playedCardsElement = document.querySelector('.played-cards');
 
-let playerLife = 12;
-let cpuLife = 12;
+let playerLife = 100;
+let cpuLife = 100;
 
 const cardTypes = ['Pedra', 'Papel', 'Tesoura'];
 

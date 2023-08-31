@@ -1,6 +1,6 @@
 # Repositório do Game sem nome ainda
 Este repositório contém um pequeno game de sorte sobre PEDRA, PAPEL E TESOURA.
-Espero que você tenha sorte o suficente para ganhar da CPU.
+Espero que você tenha sorte o suficente para ganhar da CPU..
 ## Equipe
 
 - [Alvaro Santos](https://www.github.com/contrasov)

@@ -21,7 +21,21 @@ body, h1, h2, h3, p {
     margin-top: auto;
     margin-bottom: auto;
     flex-direction: column; /* Inverte a ordem vertical das cartas */
-    transform: translateY(50%); /* Ajusta a posição vertical */
+    transform: translateY(30%); /* Ajusta a posição vertical */
+    gap: 10px;
+}
+
+.middle-space:hover .card {
+    transform: none; 
+    z-index: initial; 
+    box-shadow: none; 
+}
+
+.middle-space:hover .card img {
+    transform: none;
+    position: static; 
+    width: auto; 
+    height: auto; 
 }
 
 .player-life, .cpu-info {
@@ -48,8 +62,10 @@ body, h1, h2, h3, p {
     justify-content: space-around;
     width: 100%;
     max-width: 1000px;;
-    margin-top: 0;
+    margin-top: -100px;
+    margin-bottom: -500px;
 }
+
 
 .player-cards {
     display: flex;
@@ -60,9 +76,64 @@ body, h1, h2, h3, p {
     margin-bottom: 0;
 }
 
+.player-cards .card {
+    margin: 0 6px; /* Ajuste o valor de acordo com o espaçamento desejado */
+}
+
+.notification {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: "Outfit";
+    font-size: 16px;
+    z-index: 1000;
+}
+
+.notification-error {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: "Outfit";
+    font-size: 16px;
+    z-index: 1000;
+    background-color: #e74c3c;
+}
+
+/* Estilos para o botão "Comprar" */
+#buy-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#buy-button:hover {
+    background-color: #45a049;
+}
+
+/* Posicionamento fixo no canto inferior direito */
+#buy-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+
 .card {
-    width: 80px; 
-    height: 110px; 
+    width: 120px; 
+    height: 160px; 
     background-color: #1b1b1b;
     border: 1px solid #000; 
     display: flex;
@@ -90,7 +161,7 @@ body, h1, h2, h3, p {
 
 
 .card:hover {
-    transform: scale(1.5) rotate(3deg); 
+    transform: scale(1.7) rotate(3deg); 
     z-index: 2;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -109,10 +180,14 @@ body, h1, h2, h3, p {
     transform: translate(-50%, -50%) scale(1.5); 
 }
 
+.animated-card {
+    animation: cardAnimation 1s ease-in-out;
+    transform-origin: center;
+}
 
 
 .winner-card {
-    animation: rainbow-border 4s linear infinite;
+    border: 2px solid rgb(27, 173, 14); /* ou a cor cinza que você preferir */
 }
 
 .draw-card {
@@ -122,7 +197,7 @@ body, h1, h2, h3, p {
 .history {
     position: absolute;
     bottom: 0;
-    right: 100px;
+    right: 5px;
     padding: 10px;
     border-radius: 5px;
     flex-direction: column;
@@ -137,11 +212,24 @@ body, h1, h2, h3, p {
     cursor: pointer; 
 }
 
-.history-cards {
+.history-cards{
     display: flex;
     flex-direction: column; 
     gap: 5px;
     max-height: 480px; 
+}
+
+.history-cards:hover .card {
+    transform: none; 
+    z-index: initial; 
+    box-shadow: none; 
+}
+
+.history-cards:hover .card img {
+    transform: none;
+    position: static; 
+    width: auto; 
+    height: auto; 
 }
 
 .history-cards .history-container {
@@ -150,7 +238,7 @@ body, h1, h2, h3, p {
 }
 
 .low-opacity {
-    opacity: 0.5; /* Ou o valor de opacidade desejado */
+    opacity: 0.2; /* Ou o valor de opacidade desejado */
 }
 
 /* Estilos para o modal */
@@ -215,27 +303,4 @@ body {
     color: #e74c3c;
 }
 
-@keyframes rainbow-border {
-    0% { border: 2px solid red; }
-    14% { border: 2px solid orange; }
-    28% { border: 2px solid yellow; }
-    42% { border: 2px solid green; }
-    57% { border: 2px solid blue; }
-    71% { border: 2px solid indigo; }
-    85% { border: 2px solid violet; }
-    100% { border: 2px solid red; }
-}
 
-/* Adicione essas classes ao seu arquivo CSS */
-@keyframes zoomAndSlide {
-    0% {
-        transform: scale(1);
-        top: 0;
-        opacity: 1;
-    }
-    100% {
-        transform: scale(2);
-        top: 50%;
-        opacity: 0;
-    }
-}

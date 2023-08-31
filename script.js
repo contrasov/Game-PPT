@@ -22,7 +22,7 @@ function createCard(type, number) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.setAttribute('data-type', type);
-    card.innerHTML = `<img src="./src/cartas/${type} ${number}.png" alt="Carta ${type} ${number}" style="width: 80px; height: 110px;">`;
+    card.innerHTML = `<img src="./src/cartas/${type} ${number}.png" alt="Carta ${type} ${number}" style="width: 120px; height: 160px;">`;
     return card;
 }
 
@@ -33,21 +33,8 @@ function createCpuCard() {
     return card;
 }
 
-function chooseRandomCards() {
-    const chosenCards = [];
-    
-    while (chosenCards.length < 6) {
-        const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-        const randomNumber = Math.floor(Math.random() * 5) + 1;
-        const cardId = `${randomType} ${randomNumber}`;
+let playerCards = []; // Array para armazenar as cartas do jogador
 
-        if (!chosenCards.includes(cardId)) {
-            chosenCards.push(cardId);
-            const card = createCard(randomType, randomNumber);
-            playerCardsElement.appendChild(card);
-        }
-    }
-}
 
 function compareCards(playerCardType, cpuCardType) {
     if (playerCardType === cpuCardType) {
@@ -83,12 +70,12 @@ function updateHistory(playerCardType, cpuCardType, playerCardNumber, cpuCardNum
 
     // Limitar o número de jogadas no histórico (mantendo apenas as 3 últimas)
     const historyContainers = historyCardsElement.querySelectorAll('.history-container');
-    if (historyContainers.length > 3) {
+    if (historyContainers.length > 2) {
         historyCardsElement.removeChild(historyContainers[historyContainers.length - 1]);
     }
 
-    if (historyContainers.length >= 3) {
-        historyContainers[2].classList.add('low-opacity');
+    if (historyContainers.length >= 2) {
+        historyContainers[1].classList.add('low-opacity');
     }
 }
 
@@ -102,6 +89,10 @@ function playRound(playerCard) {
     middleSpaceElement.appendChild(cpuCard);
     middleSpaceElement.appendChild(playerCard);
 
+    setTimeout(() => {
+        middleSpaceElement.innerHTML = '';
+    }, 1800); // Remove as cartas após 3 segundos (3000 milissegundos)
+
     const playerCardType = playerCard.getAttribute('data-type');
     const cpuCardType = cpuCard.getAttribute('data-type');
     const result = compareCards(playerCardType, cpuCardType);
@@ -111,6 +102,7 @@ function playRound(playerCard) {
     } else if (result === 'cpu') {
         playerLife--;
     }
+    
     
     const allCards = [...middleSpaceElement.querySelectorAll('.card')];
     allCards.forEach(card => card.classList.remove('winner-card')); 
@@ -127,10 +119,15 @@ function playRound(playerCard) {
     }
 
     
-    
     updatePlayerLife();
     updateCpuLife();
     updateHistory(playerCardType, cpuCardType); // Atualiza o histórico
+
+    const playerCardCount = playerCardsElement.childElementCount;
+    const cpuCardCount = cpuCardsElement.childElementCount;
+    if (playerLife <= 0 || cpuLife <= 0 || playerCardCount === 0 || cpuCardCount === 0) {
+        showWinnerModal();
+    }
 
     // Adicionar a carta jogada à área de cartas jogadas
     addPlayedCard(playerCardType, playerCard.getAttribute('data-number'));
@@ -156,8 +153,47 @@ function showWinnerModal() {
     modal.style.display = 'block';
 }
 
+function createBuyButton() {
+    const buyButton = document.getElementById('buy-button');
+    buyButton.addEventListener('click', () => {
+        const playerCardCount = playerCardsElement.childElementCount;
+
+        if (playerLife > 0 && playerCardCount < 6) {
+            const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+            const randomNumber = Math.floor(Math.random() * 5) + 1;
+            const playerCard = createCard(randomType, randomNumber);
+            playerCards.push(playerCard);
+            playerCardsElement.appendChild(playerCard);
+
+            // Mostrar notificação de compra bem-sucedida
+            const notification = document.createElement('div');
+            notification.textContent = 'Carta comprada com sucesso!';
+            notification.classList.add('notification');
+            document.body.appendChild(notification);
+
+            // Remover a notificação após um curto período de tempo (opcional)
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 2000); // Remove a notificação após 2 segundos
+
+            const cpuCard = createCpuCard();
+            cpuCardsElement.appendChild(cpuCard);
+        } else if (playerCardCount >= 6) {
+            const notification = document.createElement('div');
+            notification.textContent = 'Não é possível comprar mais cartas.';
+            notification.classList.add('notification-error');
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 2000); // Remove a notificação após 2 segundos
+        }
+    });
+}
+
+
+
 function initGame() {
-    chooseRandomCards();
     updatePlayerLife();
     updateCpuLife();
 
@@ -166,10 +202,21 @@ function initGame() {
         cpuCardsElement.appendChild(card);
     }
 
+    for (let i = 0; i < 6; i++) {
+        const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+        const randomNumber = Math.floor(Math.random() * 5) + 1;
+        const card = createCard(randomType, randomNumber);
+        playerCards.push(card);
+        playerCardsElement.appendChild(card);
+    }
+
+    createBuyButton();
+
     const playAgainButton = document.getElementById('play-again-button');
     playAgainButton.addEventListener('click', () => {
         location.reload(); // Recarrega a página
     });
+
 
     playerCardsElement.addEventListener('click', (event) => {
         const clickedCard = event.target.closest('.card');
@@ -185,6 +232,7 @@ function initGame() {
         }
     });
 }
+
 
 
 

@@ -124,8 +124,8 @@ body, h1, h2, h3, p {
 
 #buy-button {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 100px;
+    left: 100px;
 }
 
 
@@ -159,7 +159,7 @@ body, h1, h2, h3, p {
 
 
 .card:hover {
-    transform: scale(1.7) rotate(3deg); 
+    transform: scale(1.7) rotate(3deg) translateY(-70px); 
     z-index: 2;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -169,7 +169,7 @@ body, h1, h2, h3, p {
 }
 
 .card:hover img {
-    transform: translateY(-60%);
+    transform: translateY(-70%);
     position: absolute; 
     top: 50%;
     left: 50%;
@@ -291,7 +291,7 @@ body, h1, h2, h3, p {
 }
 
 body {
-    background: linear-gradient(to bottom, black, #15342d);
+    background-image: url("./src/background/8.jpg");
     background-size: cover;
     overflow: hidden;
     transform-origin: top;

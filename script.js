@@ -160,7 +160,7 @@ function createBuyButton() {
 
         if (playerLife > 0 && playerCardCount < 6) {
             const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-            const randomNumber = Math.floor(Math.random() * 5) + 1;
+            const randomNumber = Math.floor(Math.random() * 10) + 1;
             const playerCard = createCard(randomType, randomNumber);
             playerCards.push(playerCard);
             playerCardsElement.appendChild(playerCard);

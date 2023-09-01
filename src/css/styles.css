@@ -47,14 +47,25 @@ body, h1, h2, h3, p {
     top: 10px;
 }
 
+.player-score{
+    font-family: "Outfit";
+    font-weight: bold;
+    font-size: 30px;
+    position: fixed;
+    right: 20px;
+    bottom: 540px;
+    color: #ffffff;
+}
+
+
 .cpu-info {
     top: 20px;
-    left: 10px; 
+    left: 20px; 
 }
 
 .player-life {
     top: 20px;
-    right: 10px; 
+    right: 20px; 
 }
 
 .cpu-cards {
@@ -109,9 +120,10 @@ body, h1, h2, h3, p {
 }
 
 #buy-button {
-    background-color: #4CAF50;
+    background-color: #1D1D1D;
     color: white;
     padding: 10px 20px;
+    width: 200px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -119,15 +131,35 @@ body, h1, h2, h3, p {
 }
 
 #buy-button:hover {
-    background-color: #45a049;
+    background-color: #dab514;
 }
 
 #buy-button {
     position: fixed;
     bottom: 100px;
-    left: 100px;
+    left: 50px;
 }
 
+#exit {
+    width: 200px;
+    background-color: #ca1616;
+    color: white;
+    padding: 10px 34px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+#exit:hover {
+    background-color: #d45b5b;
+}
+
+#exit {
+    position: fixed;
+    bottom: 55px;
+    left: 50px;
+}
 
 .card {
     width: 120px; 
@@ -240,21 +272,22 @@ body, h1, h2, h3, p {
 }
 
 
+
 /* Estilos para o modal */
 .modal {
     display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
-    top: 0;
+    top: -100px;
     width: 100%;
-    height: 100%;
+    height: 1000%;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-content {
     border-radius: 6px;
-    background: linear-gradient(180deg, #15342D 0%, #000 100%);
+    background-color: #1D1D1D;
     max-width: 300px;
     margin: auto;
     margin-top: 20%;
@@ -287,11 +320,51 @@ body, h1, h2, h3, p {
 }
 
 #play-again-button:hover {
-    background: #15342d;
+    background: #2ca37f;
+}
+
+#continue-button {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #1a1717;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#continue-button:hover {
+    background: #2ca37f;
+}
+
+#quit-button {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #1a1717;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#quit-button:hover {
+    background: #e00d0d;
 }
 
 body {
-    background-image: url("./src/background/8.jpg");
+    background-image: url("/src/background/1.jpg");
     background-size: cover;
     overflow: hidden;
     transform-origin: top;

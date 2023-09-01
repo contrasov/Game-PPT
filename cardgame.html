@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Cartas - Pedra, Papel e Tesoura</title>
+    <link rel="stylesheet" href="./src/css/styles.css"> <!-- Link para seu arquivo de estilos CSS -->
+</head>
+<body>
+    <div class="game-container">
+        <div class="cpu-area">
+            <div class="cpu-info">
+                <p>Vida CPU: <span id="cpu-life">6</span></p>
+            </div>
+            <div class="cpu-cards">
+                <!-- Cartas da CPU serão exibidas aqui -->             
+            </div>
+        </div>
+        <div class="middle-space">
+            <div class="played-cards">
+                <!-- Cartas jogadas serão exibidas aqui -->
+            </div>
+        </div>
+        <div class="player-life">
+            <p>Vida Player: <span id="player-life">6</span></p>
+        </div>
+        <div class="player-score">
+            <p>Pontuação: <span id="player-score">0</span></p>
+        </div>
+        <div class="player-area">
+            <button id="buy-button">Comprar</button>
+            <button id="exit">Sair</button>"
+            <div class="player-cards">
+                <!-- Cartas do jogador serão exibidas aqui -->
+            </div>
+            <div class="history">
+                <div class="history-title">Histórico:</div>
+                <div class="history-cards"></div>
+            </div>
+            <div id="winner-modal" class="modal">
+                <div class="modal-content">
+                    <p id="winner-message">Vencedor: Jogador 1</p>
+                    <button id="play-again-button">Jogar Novamente</button>
+                </div>
+            </div>
+            <div id="continue-modal" class="modal">
+                <div class="modal-content">
+                    <h2>Continuar?</h2>
+                    <p>Você pode escolher continuar e receber 3 cartas, mas só pode fazer isso uma vez. (CPU também recebe) </p>
+                    <button id="continue-button">Continuar</button>
+                    <button id="quit-button">Desistir</button>
+                </div>
+            </div>          
+        </div>
+    <script src="./src/js/script.js"></script> <!-- Link para seu arquivo de script JavaScript -->
+</body>
+</html>
+

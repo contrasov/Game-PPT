@@ -6,8 +6,8 @@ const middleSpaceElement = document.querySelector('.middle-space');
 const playedCardsElement = document.querySelector('.played-cards');
 const playerScoreElement = document.querySelector('#player-score');
 
-let playerLife = 12;
-let cpuLife = 12;
+let playerLife = 20;
+let cpuLife = 20;
 let playerScore = 0;
 
 const cardTypes = ['Pedra', 'Papel', 'Tesoura'];

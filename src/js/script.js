@@ -35,11 +35,12 @@ function createCard(type, number) {
 function createCpuCard() {
     const card = document.createElement('div');
     card.classList.add('card');
-    card.innerHTML = `<img src="./src/cartas/fundo.png" alt="Carta Oculta" style="width: 80px; height: 110px;">`;
+    card.innerHTML = `<img src="./src/cartas/fundo.png" alt="Carta Oculta" style="width: 120px; height: 160px;">`;
     return card;
 }
 
 let playerCards = []; // Array para armazenar as cartas do jogador
+
 
 
 function compareCards(playerCardType, cpuCardType) {
@@ -69,12 +70,18 @@ function updateHistory(playerCardType, cpuCardType, playerCardNumber, cpuCardNum
 
     historyContainer.appendChild(cpuMiddleCardClone);
     historyContainer.appendChild(playerMiddleCardClone);
-
+    
 
     historyCardsElement.prepend(historyContainer);
 
     // Limitar o número de jogadas no histórico (mantendo apenas as 3 últimas)
     const historyContainers = historyCardsElement.querySelectorAll('.history-container');
+    historyContainers.forEach((container) => {
+        const historyCards = container.querySelectorAll('.card');
+        historyCards.forEach((card) => {
+            card.classList.remove('blue-border');
+        });
+    });
     if (historyContainers.length > 2) {
         historyCardsElement.removeChild(historyContainers[historyContainers.length - 1]);
     }
@@ -83,6 +90,7 @@ function updateHistory(playerCardType, cpuCardType, playerCardNumber, cpuCardNum
         historyContainers[1].classList.add('low-opacity');
     }
 }
+
 
 let continueUsed = false;
 
@@ -147,6 +155,8 @@ function playRound(playerCard) {
     middleSpaceElement.innerHTML = '';
     middleSpaceElement.appendChild(cpuCard);
     middleSpaceElement.appendChild(playerCard);
+    playerCard.classList.remove('blue-border');
+
 
     const playerCardType = playerCard.getAttribute('data-type');
     const cpuCardType = cpuCard.getAttribute('data-type');
@@ -197,14 +207,16 @@ function playRound(playerCard) {
     }
 
     if (cpuCardCount === 0) {
-        drawCpuCards(4);
+        drawCpuCards(3);
     }
 
 
     // Adicionar a carta jogada à área de cartas jogadas
     addPlayedCard(playerCardType, playerCard.getAttribute('data-number'));
-
+    checkAndHighlightPlayerCards();
 }
+
+
 
 function addPlayedCard(type, number) {
     const playedCard = createCard(type, number);
@@ -239,6 +251,7 @@ function createBuyButton() {
             playerCardsElement.appendChild(playerCard);
             playerScore -= 5;
             updatePlayerScore();
+            checkAndHighlightPlayerCards();
 
             // Mostrar notificação de compra bem-sucedida
             const notification = document.createElement('div');
@@ -264,6 +277,45 @@ function createBuyButton() {
     });
 }
 
+function checkAndHighlightPlayerCards() {
+    const playerCardElements = playerCardsElement.querySelectorAll('.card');
+    const cardCounts = {}; // Um objeto para contar quantas cartas de cada tipo o jogador possui
+
+    // Conta as cartas do jogador de cada tipo
+    playerCardElements.forEach((card) => {
+        const cardType = card.getAttribute('data-type');
+        if (cardType in cardCounts) {
+            cardCounts[cardType]++;
+        } else {
+            cardCounts[cardType] = 1;
+        }
+    });
+
+    // Adiciona a classe CSS 'highlighted' às cartas do mesmo tipo que tenham 3 ou mais
+    playerCardElements.forEach((card) => {
+        const cardType = card.getAttribute('data-type');
+        if (cardCounts[cardType] >= 3) {
+            card.classList.add('blue-border');
+        } else {
+            card.classList.remove('blue-border');
+        }
+    });
+
+    // Adiciona um ouvinte de evento de clique às cartas do jogador
+    playerCardElements.forEach((card) => {
+        card.addEventListener('click', () => {
+            if (card.classList.contains('blue-border')) {
+                // Remove a classe 'highlighted' das cartas do mesmo tipo
+                playerCardElements.forEach((c) => {
+                    if (c !== card && c.getAttribute('data-type') === card.getAttribute('data-type')) {
+                        c.classList.remove('blue-border');
+                    }
+                });
+            }
+        });
+    });
+}
+
 
 
 function initGame() {
@@ -284,7 +336,9 @@ function initGame() {
         playerCardsElement.appendChild(card);
     }
 
+    checkAndHighlightPlayerCards();
     createBuyButton();
+
 
     const playAgainButton = document.getElementById('play-again-button');
     playAgainButton.addEventListener('click', () => {
@@ -296,18 +350,21 @@ function initGame() {
         window.location.href = "index.html";
     });
 
-
     playerCardsElement.addEventListener('click', (event) => {
         const clickedCard = event.target.closest('.card');
         if (clickedCard && clickedCard.parentElement === playerCardsElement) {
             playRound(clickedCard);
+            checkAndHighlightPlayerCards();
             const cpuCards = cpuCardsElement.querySelectorAll('.card');
             if (cpuCards.length > 0) {
                 cpuCardsElement.removeChild(cpuCards[0]);
             }
+
         }
     });
+    
 }
+
 
 
 

@@ -191,7 +191,7 @@ body, h1, h2, h3, p {
 
 
 .card:hover {
-    transform: scale(1.7) rotate(3deg) translateY(-70px); 
+    transform: scale(1.5) rotate(3deg) translateY(-70px); 
     z-index: 2;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -222,6 +222,10 @@ body, h1, h2, h3, p {
 
 .draw-card {
     border: 2px solid rgb(255, 255, 255); 
+}
+
+.blue-border {
+    border: 2px solid rgb(9, 176, 241);
 }
 
 .history {
@@ -362,6 +366,9 @@ body, h1, h2, h3, p {
 #quit-button:hover {
     background: #e00d0d;
 }
+
+
+
 
 body {
     background-image: url("/src/background/1.jpg");

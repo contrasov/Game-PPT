@@ -80,11 +80,16 @@ button {
     cursor: pointer;
 }
 
+
+
 button:hover {
     background-color: #2ca37f; /* Fundo roxo */
     color: #ffffff; /* Texto branco */
 }
 
+#tutorial:hover {
+    color: antiquewhite;
+}
 
 body {
     overflow: hidden;

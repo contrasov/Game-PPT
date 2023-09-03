@@ -1,5 +1,3 @@
-const playerLifeElement = document.getElementById('player-life');
-const cpuLifeElement = document.getElementById('cpu-life');
 const playerCardsElement = document.querySelector('.player-cards');
 const cpuCardsElement = document.querySelector('.cpu-cards');
 const middleSpaceElement = document.querySelector('.middle-space');
@@ -17,11 +15,13 @@ function updatePlayerScore(){
 }
 
 function updatePlayerLife() {
-    playerLifeElement.textContent = playerLife;
+    const playerHealthBar = document.getElementById('player-health-bar');
+    playerHealthBar.style.width = (playerLife * 5) + '%'; // Assume 20 pontos de vida máxima
 }
 
 function updateCpuLife() {
-    cpuLifeElement.textContent = cpuLife;
+    const cpuHealthBar = document.getElementById('cpu-health-bar');
+    cpuHealthBar.style.width = (cpuLife * 5) + '%'; // Assume 20 pontos de vida máxima
 }
 
 function createCard(type, number) {

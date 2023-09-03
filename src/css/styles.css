@@ -38,15 +38,6 @@ body, h1, h2, h3, p {
     height: auto; 
 }
 
-.player-life, .cpu-info {
-    font-family: "Outfit";
-    font-size: 30px;
-    font-weight: bold;
-    color: #e74c3c;
-    position: absolute;
-    top: 10px;
-}
-
 .player-score{
     font-family: "Outfit";
     font-weight: bold;
@@ -58,15 +49,6 @@ body, h1, h2, h3, p {
 }
 
 
-.cpu-info {
-    top: 20px;
-    left: 20px; 
-}
-
-.player-life {
-    top: 20px;
-    right: 20px; 
-}
 
 .cpu-cards {
     display: flex;
@@ -127,7 +109,6 @@ body, h1, h2, h3, p {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 #buy-button:hover {
@@ -208,11 +189,6 @@ body, h1, h2, h3, p {
     width: 120%; 
     height: 120%; 
     transform: translate(-50%, -50%) scale(1.5); 
-}
-
-.animated-card {
-    animation: cardAnimation 1s ease-in-out;
-    transform-origin: center;
 }
 
 
@@ -365,6 +341,49 @@ body, h1, h2, h3, p {
 
 #quit-button:hover {
     background: #e00d0d;
+}
+
+.health-bar-container {
+    position: absolute;
+    top: 10px; /* Ajuste conforme necessário */
+    height: 20px;
+    width: 200px; /* Ajuste conforme necessário */
+    background-color: #ddd;
+}
+
+.health-bar {
+    height: 100%;
+    width: 100%;
+}
+
+#player-health-container {
+    right: 10px; /* Ajuste conforme necessário */
+}
+
+#player-health-bar {
+    background-color: #00ff00; /* Cor da barra de vida do jogador */
+}
+
+/* Estilização do título da CPU */
+#cpu-health-container p {
+    font-family: "Outfit";
+    text-align: center; /* Centraliza o texto horizontalmente */
+    margin-bottom: 5px; /* Adiciona um espaço entre o título e a barra de vida */
+}
+
+#player-health-container p {
+    font-family: "Outfit";
+    text-align: center; /* Centraliza o texto horizontalmente */
+    margin-bottom: 5px; /* Adiciona um espaço entre o título e a barra de vida */
+}
+
+
+#cpu-health-container {
+    left: 10px; /* Ajuste conforme necessário */
+}
+
+#cpu-health-bar {
+    background-color: #ff0000; /* Cor da barra de vida da CPU */
 }
 
 

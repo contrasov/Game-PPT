@@ -99,7 +99,6 @@ function updateHistory(playerCardType, cpuCardType, playerCardNumber, cpuCardNum
     }
 }
 
-
 let continueUsed = false;
 
 function showContinueDialog() {
@@ -159,10 +158,12 @@ function playRound(playerCard) {
     const cpuCardNumber = Math.floor(Math.random() * 5) + 1;
     const cpuCard = createCard(cpuCardTypeRound, cpuCardNumber);
 
+    
     middleSpaceElement.innerHTML = '';
     middleSpaceElement.appendChild(cpuCard);
     middleSpaceElement.appendChild(playerCard);
     playerCard.classList.remove('blue-border');
+
 
     const playerCardType = playerCard.getAttribute('data-type');
     const cpuCardType = cpuCard.getAttribute('data-type');
@@ -182,14 +183,17 @@ function playRound(playerCard) {
         cpuCard.classList.add('draw-card');
     }
 
+    
     setTimeout(() => {
         middleSpaceElement.innerHTML = '';
-    }, 2000);
+        createAndDisplayMiddleCards();
+    }, 3000);
 
     updatePlayerLife();
     updateCpuLife();
     updateHistory(playerCardType, cpuCardType);
     updatePlayerScore();
+
 
     const playerCardCount = playerCardsElement.childElementCount;
     const cpuCardCount = cpuCardsElement.childElementCount;
@@ -320,12 +324,22 @@ function checkAndHighlightPlayerCards() {
     
 }
 
+function createAndDisplayMiddleCards() {
+    for (let i = 0; i < 2; i++) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.style.zIndex = '-1'; // Define o z-index como um valor negativo
+        card.style.border = '1px solid white'; // Adiciona uma borda de 2px com cor branca
+        middleSpaceElement.appendChild(card);
+    }
+}
 
 
 function initGame() {
     updatePlayerLife();
     updateCpuLife();
     updatePlayerScore();
+    createAndDisplayMiddleCards();
 
     const maxSameTypeCardCount = 3; // Máximo de cartas do mesmo tipo
     const playerCardCounts = {}; // Um objeto para contar quantas cartas de cada tipo o jogador possui

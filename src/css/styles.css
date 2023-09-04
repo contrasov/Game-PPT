@@ -1,8 +1,10 @@
+/* Estilos gerais de reset */
 body, h1, h2, h3, p {
     margin: 0;
     padding: 0;
 }
 
+/* Estilos do container principal do jogo */
 .game-container {
     display: flex;
     flex-direction: column;
@@ -10,9 +12,10 @@ body, h1, h2, h3, p {
     align-items: center;
     height: 100vh;
     box-sizing: border-box;
-    position: relative; 
+    position: relative;
 }
 
+/* Estilos do espaço central onde as cartas são exibidas */
 .middle-space {
     width: 100%;
     display: flex;
@@ -20,25 +23,27 @@ body, h1, h2, h3, p {
     align-items: center;
     margin-top: auto;
     margin-bottom: auto;
-    flex-direction: column; /* Inverte a ordem vertical das cartas */
-    transform: translateY(30%); /* Ajusta a posição vertical */
+    flex-direction: column;
+    transform: translateY(40%);
     gap: 10px;
 }
 
+/* Estilos para reverter transformações nas cartas ao passar o mouse */
 .middle-space:hover .card {
-    transform: none; 
-    z-index: initial; 
-    box-shadow: none; 
+    transform: none;
+    z-index: initial;
+    box-shadow: none;
 }
 
 .middle-space:hover .card img {
     transform: none;
-    position: static; 
-    width: auto; 
-    height: auto; 
+    position: static;
+    width: auto;
+    height: auto;
 }
 
-.player-score{
+/* Estilos para a pontuação do jogador */
+.player-score {
     font-family: "Outfit";
     font-weight: bold;
     font-size: 30px;
@@ -48,24 +53,23 @@ body, h1, h2, h3, p {
     color: #ffffff;
 }
 
-
-
+/* Estilos do container de cartas da CPU */
 .cpu-cards {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    max-width: 1000px;;
+    max-width: 1000px;
     margin-top: -100px;
     margin-bottom: -500px;
     gap: 10px;
 }
 
+/* Estilos para as cartas da CPU */
 .cpu-cards .card {
-    border: 1px solid #ffffff8f; 
-
+    border: 2px solid #ffffff8f;
 }
 
-
+/* Estilos do container de cartas do jogador */
 .player-cards {
     display: flex;
     justify-content: space-around;
@@ -75,10 +79,12 @@ body, h1, h2, h3, p {
     margin-bottom: 0;
 }
 
+/* Estilos para as cartas do jogador */
 .player-cards .card {
-    margin: 0 6px; 
+    margin: 0 6px;
 }
 
+/* Estilos para notificações */
 .notification {
     position: fixed;
     top: 10px;
@@ -121,27 +127,25 @@ body, h1, h2, h3, p {
     background-color: #e74c3c;
 }
 
+/* Estilos do botão de compra */
 #buy-button {
-    background-color: #1D1D1D;
+    background-color: #282828;
     color: white;
     padding: 10px 20px;
     width: 200px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    border: 1px solid #ffffff4b; 
+    position: fixed;
+    bottom: 100px;
+    left: 50px;
 }
 
 #buy-button:hover {
     background-color: #dab514;
 }
 
-#buy-button {
-    position: fixed;
-    bottom: 100px;
-    left: 50px;
-}
-
+/* Estilos do botão de saída */
 #exit {
     width: 200px;
     background-color: #ca1616;
@@ -150,21 +154,29 @@ body, h1, h2, h3, p {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease; 
+    transition: background-color 0.3s ease;
 }
 
+#exit {
+    position: fixed;
+    bottom: 55px;
+    left: 50px;
+}
+
+#exit:hover {
+    background-color: #d45b5b;
+}
+
+/* Estilos do botão de mesclar */
 #merge-button {
     width: 200px;
-    background-color: #1D1D1D;
+    background-color: #282828;
     color: white;
     padding: 10px 34px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-#merge-button {
     position: fixed;
     bottom: 145px;
     left: 50px;
@@ -174,33 +186,29 @@ body, h1, h2, h3, p {
     background-color: rgb(9, 176, 241);
 }
 
-/* Estilo CSS para o novo modal */
-
+/* Estilos para o modal */
 .fmodal-content {
     border-radius: 6px;
-    background-color: #1D1D1D;
+    background-color: #111111;
     max-width: 400px;
     margin: auto;
-    margin-top: 15%; /* Ajuste a posição vertical do modal */
-    padding: 50px; /* Ajuste o espaçamento interno do modal */
+    margin-top: 15%;
+    padding: 50px;
     text-align: center;
     font-weight: bold;
     font-family: "Outfit";
     color: white;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaçamento vertical entre os elementos */
+    gap: 20px;
 }
 
-h2 {
-    text-align: center;
-}
-
+/* Estilos para as cartas com borda azul */
 #blue-border-cards {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center; /* Centralize as cartas horizontalmente */
-    align-items: center; /* Centralize as cartas verticalmente */
+    justify-content: center;
+    align-items: center;
 }
 
 #blue-border-cards .card {
@@ -209,33 +217,35 @@ h2 {
     height: 160px;
 }
 
-#blue-border-cards:hover .card img  {
+#blue-border-cards:hover .card img {
     transform: none;
-    position: static; 
-    width: auto; 
-    height: auto; 
+    position: static;
+    width: auto;
+    height: auto;
 }
 
 #blue-border-cards:hover .card {
-    transform: none; 
-    z-index: initial; 
-    box-shadow: none; 
+    transform: none;
+    z-index: initial;
+    box-shadow: none;
 }
 
+/* Estilos para botões de ação */
 #cancel-button {
     display: inline-block;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     color: #fff;
-    background: #1a1717;
+    background: #282828;
     font-size: 16px;
     font-weight: bold;
     padding: 10px 30px;
     text-align: center;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    margin-left: 10px; /* Adicione uma margem à direita para distanciar os botões */
+    margin-left: 10px;
+    border: 1px solid #ffffff4b;
 }
 
 #cancel-button:hover {
@@ -248,91 +258,85 @@ h2 {
     border: none;
     border-radius: 5px;
     color: #fff;
-    background: #1a1717;
+    background: #282828;
     font-size: 16px;
     font-weight: bold;
     padding: 10px 40px;
     text-align: center;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    border: 1px solid #ffffff4b;
 }
 
 #merge2-button:hover {
     background-color: rgb(9, 176, 241);
 }
 
-#exit:hover {
-    background-color: #d45b5b;
-}
-
-#exit {
-    position: fixed;
-    bottom: 55px;
-    left: 50px;
-}
-
+/* Estilos para cartas */
 .card {
-    width: 120px; 
-    height: 160px; 
-    background-color: #1b1b1b;
-    border: 1px solid #000; 
+    width: 120px;
+    height: 160px;
+    background-color: #1b1b1b6e;
+    border: 1px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease-in-out;
     position: relative;
-    perspective: 1000px;    
+    perspective: 1000px;
     transform-style: preserve-3d;
 }
 
+/* Estilos para cartas da CPU ao passar o mouse */
 .cpu-cards:hover .card {
-    transform: none; 
-    z-index: initial; 
-    box-shadow: none; 
+    transform: none;
+    z-index: initial;
+    box-shadow: none;
 }
 
 .cpu-cards:hover .card img {
     transform: none;
-    position: static; 
-    width: auto; 
-    height: auto; 
+    position: static;
+    width: auto;
+    height: auto;
 }
 
-
+/* Estilos para cartas ao passar o mouse */
 .card:hover {
-    transform: scale(1.5) rotate(3deg) translateY(-70px); 
+    transform: scale(1.5) rotate(3deg) translateY(-105px);
     z-index: 2;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .card img {
-    max-width: 100%; 
+    max-width: 100%;
 }
 
 .card:hover img {
-    transform: translateY(-70%);
-    position: absolute; 
+    transform: translateY(-105%);
+    position: absolute;
     top: 50%;
     left: 50%;
-    width: 120%; 
-    height: 120%; 
-    transform: translate(-50%, -50%) scale(1.5); 
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%) scale(1.5);
 }
 
-
+/* Estilos para cartas vencedoras, cartas de empate e cartas com borda azul */
 .winner-card {
-    border: 2px solid rgb(27, 173, 14); 
+    border: 2px solid rgb(27, 173, 14);
 }
 
 .draw-card {
-    border: 2px solid rgb(255, 255, 255); 
+    border: 2px solid rgb(255, 255, 255);
 }
 
 .blue-border {
     border: 2px solid rgb(9, 176, 241);
 }
 
+/* Estilos para o histórico de cartas */
 .history {
     position: absolute;
     bottom: 0;
@@ -348,27 +352,27 @@ h2 {
     color: aliceblue;
     font-weight: bold;
     margin-bottom: 5px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
-.history-cards{
+.history-cards {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 5px;
-    max-height: 480px; 
+    max-height: 480px;
 }
 
 .history-cards:hover .card {
-    transform: none; 
-    z-index: initial; 
-    box-shadow: none; 
+    transform: none;
+    z-index: initial;
+    box-shadow: none;
 }
 
 .history-cards:hover .card img {
     transform: none;
-    position: static; 
-    width: auto; 
-    height: auto; 
+    position: static;
+    width: auto;
+    height: auto;
 }
 
 .history-cards .history-container {
@@ -377,10 +381,8 @@ h2 {
 }
 
 .low-opacity {
-    opacity: 0.2; 
+    opacity: 0.2;
 }
-
-
 
 /* Estilos para o modal */
 .modal {
@@ -396,7 +398,7 @@ h2 {
 
 .modal-content {
     border-radius: 6px;
-    background-color: #1D1D1D;
+    background-color: #111111;
     max-width: 300px;
     margin: auto;
     margin-top: 20%;
@@ -408,10 +410,10 @@ h2 {
     color: white;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espaçamento vertical entre os elementos */
+    gap: 10px;
 }
 
-
+/* Estilos para botões no modal */
 #play-again-button {
     display: inline-block;
     outline: 0;
@@ -419,7 +421,7 @@ h2 {
     border: none;
     border-radius: 5px;
     color: #fff;
-    background: #1a1717;
+    background: #282828;
     font-size: 16px;
     font-weight: bold;
     padding: 10px 20px;
@@ -439,7 +441,7 @@ h2 {
     border: none;
     border-radius: 5px;
     color: #fff;
-    background: #1a1717;
+    background: #282828;
     font-size: 16px;
     font-weight: bold;
     padding: 10px 20px;
@@ -459,7 +461,7 @@ h2 {
     border: none;
     border-radius: 5px;
     color: #fff;
-    background: #1a1717;
+    background: #282828;
     font-size: 16px;
     font-weight: bold;
     padding: 10px 20px;
@@ -472,12 +474,12 @@ h2 {
     background: #e00d0d;
 }
 
-
+/* Estilos para a barra de vida */
 .health-bar-container {
     position: absolute;
-    top: 10px; /* Ajuste conforme necessário */
+    top: 10px;
     height: 20px;
-    width: 200px; /* Ajuste conforme necessário */
+    width: 200px;
     background-color: #ddd;
 }
 
@@ -487,38 +489,34 @@ h2 {
 }
 
 #player-health-container {
-    right: 10px; /* Ajuste conforme necessário */
+    right: 10px;
 }
 
 #player-health-bar {
-    background-color: #00ff00; /* Cor da barra de vida do jogador */
+    background-color: #00ff00;
 }
 
-/* Estilização do título da CPU */
 #cpu-health-container p {
     font-family: "Outfit";
-    text-align: center; /* Centraliza o texto horizontalmente */
-    margin-bottom: 5px; /* Adiciona um espaço entre o título e a barra de vida */
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 #player-health-container p {
     font-family: "Outfit";
-    text-align: center; /* Centraliza o texto horizontalmente */
-    margin-bottom: 5px; /* Adiciona um espaço entre o título e a barra de vida */
+    text-align: center;
+    margin-bottom: 5px;
 }
 
-
 #cpu-health-container {
-    left: 10px; /* Ajuste conforme necessário */
+    left: 10px;
 }
 
 #cpu-health-bar {
-    background-color: #ff0000; /* Cor da barra de vida da CPU */
+    background-color: #ff0000;
 }
 
-
-
-
+/* Estilos de fundo */
 body {
     background-image: url("/src/background/2.jpg");
     background-size: cover;
@@ -530,5 +528,3 @@ body {
     font-weight: bold;
     color: #e74c3c;
 }
-
-

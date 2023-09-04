@@ -13,51 +13,51 @@ body {
     height: 100vh;
     font-family: Arial, sans-serif;
     backdrop-filter: blur(10px);
-}
-
-.card1 {
-    width: 100px; /* Largura da carta */
-    height: 150px; /* Altura da carta */
-    background-image: url('/src/cartas/Papel\ 10.png'); /* Caminho para a imagem da carta */
-    background-size: cover;
-    position: absolute;
-    animation-duration: 8s; /* Duração da animação em segundos */
-    animation-timing-function: linear;
-    animation-iteration-count: infinite; /* Animação infinita */
-    right: 0;
-}
-
-.card2 {
-    width: 100px; /* Largura da carta */
-    height: 150px; /* Altura da carta */
-    background-image: url('/src/cartas/Pedra\ 2.png'); /* Caminho para a imagem da carta */
-    background-size: cover;
-    position: absolute;
-    animation-duration: 8s; /* Duração da animação em segundos */
-    animation-timing-function: linear;
-    animation-iteration-count: infinite; /* Animação infinita */
-}
-
-.card3 {
-    width: 100px; /* Largura da carta */
-    height: 150px; /* Altura da carta */
-    background-image: url('/src/cartas/Tesoura\ 14.png'); /* Caminho para a imagem da carta */
-    background-size: cover;
-    position: absolute;
-    animation-duration: 8s; /* Duração da animação em segundos */
-    animation-timing-function: linear;
-    animation-iteration-count: infinite; /* Animação infinita */
-    left: 0;
+    overflow: hidden;
 }
 
 .container {
     height: 200px;
     width: 300px;
     text-align: center;
-    background: radial-gradient(231% 135.8% at 0.9% 2.98%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%);
-    backdrop-filter: blur(21px);
+    background-color: #111111; /* Cor de fundo preta */
+    border: 2px solid #000913; /* Borda branca ao redor do patch note */
     padding: 20px;
     border-radius: 10px;
+}
+
+/* Estilos para o patch note */
+#patch-note {
+    position: fixed;
+    right: 100px;
+    width: 300px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 80vh; /* Defina uma altura máxima em relação à altura da janela de visualização */
+    background-color: #111111; 
+    border: 2px solid #000913; 
+    border-radius: 5px; /* Borda arredondada */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    color: #ffffffff; 
+}
+
+/* Estilos para a lista de patch notes */
+#patch-note ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#patch-note li {
+    margin-bottom: 20px;
+}
+
+#patch-note h2 {
+    margin-top: 0;
+}
+
+/* Espaçamento entre as atualizações */
+#patch-note li:not(:last-child) {
+    margin-bottom: 10px;
 }
 
 
@@ -70,7 +70,7 @@ h1 {
 
 button {
     width: 200px;
-    background-color: #1D1D1D; /* Fundo branco */
+    background-color: #282828; /* Fundo branco */
     color: #ffffff; /* Texto roxo */
     border: none;
     padding: 10px 20px;
@@ -89,48 +89,4 @@ button:hover {
 
 #tutorial:hover {
     color: antiquewhite;
-}
-
-body {
-    overflow: hidden;
-}
-
-.card1 {
-    animation-name: moveCard1;
-}
-
-.card2 {
-    animation-name: moveCard2;
-}
-
-.card3 {
-    animation-name: moveCard3;
-}
-
-/* Define as animações de movimento para cada carta */
-@keyframes moveCard1 {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-    }
-    100% {
-        transform: translateY(-200vh) rotate(360deg);
-    }
-}
-
-@keyframes moveCard2 {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-    }
-    100% {
-        transform: translateY(-200vh) rotate(360deg);
-    }
-}
-
-@keyframes moveCard3 {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-    }
-    100% {
-        transform: translateY(-200vh) rotate(360deg);
-    }
 }

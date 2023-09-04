@@ -16,12 +16,12 @@ function updatePlayerScore(){
 
 function updatePlayerLife() {
     const playerHealthBar = document.getElementById('player-health-bar');
-    playerHealthBar.style.width = (playerLife * 5) + '%'; // Assume 20 pontos de vida máxima
+    playerHealthBar.style.width = (playerLife * 5) + '%'; 
 }
 
 function updateCpuLife() {
     const cpuHealthBar = document.getElementById('cpu-health-bar');
-    cpuHealthBar.style.width = (cpuLife * 5) + '%'; // Assume 20 pontos de vida máxima
+    cpuHealthBar.style.width = (cpuLife * 5) + '%'; 
 }
 
 function createCard(type, number) {
@@ -39,7 +39,7 @@ function createCpuCard() {
     return card;
 }
 
-let playerCards = []; // Array para armazenar as cartas do jogador
+let playerCards = []; 
 
 
 
@@ -52,10 +52,18 @@ function compareCards(playerCardType, cpuCardType) {
         (playerCardType === 'Tesoura' && cpuCardType === 'Papel')
     ) {
         return 'player';
+    } else if (
+        (playerCardType === 'Papel F' && (cpuCardType === 'Pedra' || cpuCardType === 'Papel' || cpuCardType === 'Tesoura')) || 
+        (playerCardType === 'Pedra F' && (cpuCardType === 'Tesoura' || cpuCardType === 'Pedra'|| cpuCardType === 'Papel')) || 
+        (playerCardType === 'Tesoura F' && (cpuCardType === 'Papel' || cpuCardType === 'Tesoura' ||  cpuCardType === 'Pedra'))
+        
+    ) {
+        return 'player';
     } else {
         return 'cpu';
     }
 }
+
 
 
 function updateHistory(playerCardType, cpuCardType, playerCardNumber, cpuCardNumber) {
@@ -111,6 +119,7 @@ function showContinueDialog() {
             }
 
             continueUsed = true;
+            checkAndHighlightPlayerCards();
             continueModal.style.display = 'none';
         });
 
@@ -134,7 +143,7 @@ function showContinueDialog() {
 
 function showContinueDialogIfNeeded() {
     if (playerCardsElement.childElementCount === 0) {
-        showContinueDialog();let
+        showContinueDialog();
     }
 }
 
@@ -146,8 +155,6 @@ function drawCpuCards(count) {
 }
 
 function playRound(playerCard) {
-
-
     const cpuCardTypeRound = cardTypes[Math.floor(Math.random() * cardTypes.length)];
     const cpuCardNumber = Math.floor(Math.random() * 5) + 1;
     const cpuCard = createCard(cpuCardTypeRound, cpuCardNumber);
@@ -157,41 +164,31 @@ function playRound(playerCard) {
     middleSpaceElement.appendChild(playerCard);
     playerCard.classList.remove('blue-border');
 
-
     const playerCardType = playerCard.getAttribute('data-type');
     const cpuCardType = cpuCard.getAttribute('data-type');
     const result = compareCards(playerCardType, cpuCardType);
 
-    if (result === 'player') {
-        cpuLife--;
-    } else if (result === 'cpu') {
-        playerLife--;
-    }
-    
-    
-    const allCards = [...middleSpaceElement.querySelectorAll('.card')];
-    allCards.forEach(card => card.classList.remove('winner-card')); 
+    const isSpecialCard = playerCardType === 'Papel F' || playerCardType === 'Pedra F' || playerCardType === 'Tesoura F';
 
     if (result === 'player') {
-        cpuLife--;
+        cpuLife -= isSpecialCard ? 4 : 2;
         playerScore += 5;
-        playerCard.classList.add('winner-card'); // Adicione a classe à carta ganhadora
+        playerCard.classList.add('winner-card');
     } else if (result === 'cpu') {
         playerLife--;
-        cpuCard.classList.add('winner-card'); // Adicione a classe à carta ganhadora
+        cpuCard.classList.add('winner-card');
     } else {
-        playerCard.classList.add('draw-card'); // Adicione a classe de empate à carta do jogador
-        cpuCard.classList.add('draw-card'); // Adicione a classe de empate à carta da CPU
+        playerCard.classList.add('draw-card');
+        cpuCard.classList.add('draw-card');
     }
 
     setTimeout(() => {
         middleSpaceElement.innerHTML = '';
-    }, 2000); // Remove as cartas após 3 segundos (3000 milissegundos)
-
+    }, 2000);
 
     updatePlayerLife();
     updateCpuLife();
-    updateHistory(playerCardType, cpuCardType); // Atualiza o histórico
+    updateHistory(playerCardType, cpuCardType);
     updatePlayerScore();
 
     const playerCardCount = playerCardsElement.childElementCount;
@@ -210,11 +207,10 @@ function playRound(playerCard) {
         drawCpuCards(3);
     }
 
-
-    // Adicionar a carta jogada à área de cartas jogadas
     addPlayedCard(playerCardType, playerCard.getAttribute('data-number'));
     checkAndHighlightPlayerCards();
 }
+
 
 
 
@@ -314,6 +310,14 @@ function checkAndHighlightPlayerCards() {
             }
         });
     });
+
+    const mergeButton = document.getElementById('merge-button');
+    if (Object.values(cardCounts).some(count => count >= 3)) {
+        mergeButton.style.display = 'block';
+    } else {
+        mergeButton.style.display = 'none';
+    }
+    
 }
 
 
@@ -323,22 +327,107 @@ function initGame() {
     updateCpuLife();
     updatePlayerScore();
 
+    const maxSameTypeCardCount = 3; // Máximo de cartas do mesmo tipo
+    const playerCardCounts = {}; // Um objeto para contar quantas cartas de cada tipo o jogador possui
+    let totalPlayerCards = 0; // Contador para o número total de cartas do jogador
+
+
     for (let i = 0; i < 6; i++) {
         const card = createCpuCard();
         cpuCardsElement.appendChild(card);
     }
 
-    for (let i = 0; i < 6; i++) {
+    while (totalPlayerCards < 6) {
         const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
         const randomNumber = Math.floor(Math.random() * 5) + 1;
         const card = createCard(randomType, randomNumber);
-        playerCards.push(card);
-        playerCardsElement.appendChild(card);
+
+        // Verifique se o jogador já tem o máximo permitido de cartas do mesmo tipo
+        if (!(randomType in playerCardCounts) || playerCardCounts[randomType] < maxSameTypeCardCount) {
+            playerCards.push(card);
+            playerCardsElement.appendChild(card);
+
+            // Atualize as contagens
+            if (!(randomType in playerCardCounts)) {
+                playerCardCounts[randomType] = 1;
+            } else {
+                playerCardCounts[randomType]++;
+            }
+
+            totalPlayerCards++;
+        }
     }
 
     checkAndHighlightPlayerCards();
     createBuyButton();
 
+    const mergeButton = document.getElementById('merge-button');
+    const merge2Button = document.getElementById('merge2-button');
+    const cancelButton = document.getElementById('cancel-button');
+    const mergeModal = document.getElementById('merge-modal');
+    const blueBorderCardsContainer = document.getElementById('blue-border-cards');
+
+    mergeButton.addEventListener('click', () => {
+        // Limpa o conteúdo do modal
+        blueBorderCardsContainer.innerHTML = '';
+
+        let blueBorderCardCount = 0;
+
+        // Itera sobre as cartas do jogador para encontrar aquelas com borda azul
+        playerCardsElement.querySelectorAll('.card').forEach((card) => {
+            if (card.classList.contains('blue-border')) {
+                if (blueBorderCardCount < 3) {
+                    const cardCopy = card.cloneNode(true);
+                    blueBorderCardsContainer.appendChild(cardCopy);
+                    blueBorderCardCount++;
+                } else {
+                    return;
+                }
+            }
+        });
+
+        // Exibe o modal
+        mergeModal.style.display = 'block';
+    });
+
+    cancelButton.addEventListener('click', () => {
+        // Fecha o modal ao clicar em "Cancelar"
+        mergeModal.style.display = 'none';
+    });
+
+    merge2Button.addEventListener('click', () => {
+        const blueBorderCards = playerCardsElement.querySelectorAll('.card.blue-border');
+        if (blueBorderCards.length >= 3) {
+            // Remove apenas as três primeiras cartas com borda azul do jogador
+            for (let i = 0; i < 3; i++) {
+                const card = blueBorderCards[i];
+                playerCardsElement.removeChild(card);
+            }
+    
+            // Crie a carta especial correspondente à fusão (por exemplo, "Pedra F")
+            const mergedCardType = `${blueBorderCards[0].getAttribute('data-type')} F`;
+            const mergedCardNumber = 1; // Você pode ajustar o número conforme necessário
+            const mergedCard = createCard(mergedCardType, mergedCardNumber);
+    
+            // Adicione a carta especial ao jogador
+            playerCardsElement.appendChild(mergedCard);
+    
+            // Limpe o conteúdo do modal
+            blueBorderCardsContainer.innerHTML = '';
+            checkAndHighlightPlayerCards();
+        }     
+        mergeModal.style.display = 'none';
+
+        const notification = document.createElement('div');
+        notification.textContent = 'Fusão Concluída';
+        notification.classList.add('notification2');
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 2000); // Remove a notificação após 2 segundos
+
+    });
 
     const playAgainButton = document.getElementById('play-again-button');
     playAgainButton.addEventListener('click', () => {
@@ -350,6 +439,7 @@ function initGame() {
         window.location.href = "index.html";
     });
 
+    //CLIQUE DO PLAYER NO DECK
     playerCardsElement.addEventListener('click', (event) => {
         const clickedCard = event.target.closest('.card');
         if (clickedCard && clickedCard.parentElement === playerCardsElement) {
@@ -359,11 +449,10 @@ function initGame() {
             if (cpuCards.length > 0) {
                 cpuCardsElement.removeChild(cpuCards[0]);
             }
-
         }
     });
-    
 }
+
 
 
 

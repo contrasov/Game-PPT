@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/src/fav/favicon.ico" type="image/x-icon">
     <title>Jogo</title>
-    <link rel="stylesheet" href="./src/css/styles.css"> <!-- Link para seu arquivo de estilos CSS -->
+    <link rel="stylesheet" href="./src/css/styles.css"> 
 </head>
 <body>
     <div class="game-container">
         <div class="cpu-area">
             <div class="cpu-info">
                 <div class="health-bar-container" id="cpu-health-container">
-                    <p>Vida da CPU</p> <!-- Título -->
+                    <p>Vida da CPU</p> 
                     <div id="cpu-health-bar" class="health-bar"></div>
                 </div>            
             </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="player-life">
             <div class="health-bar-container" id="player-health-container">
-                <p>Sua Vida</p> <!-- Título -->
+                <p>Sua Vida</p> 
                 <div id="player-health-bar" class="health-bar"></div>
             </div>        
         </div>
@@ -62,9 +62,23 @@
             <div id="card-options" style="display: none;">
                 <button id="fortalecer-button">Fortalecer</button>
                 <button id="jogar-button">Jogar</button>
-              </div>              
+              </div>            
+              <button id="merge-button" style="display: none;">Fundir</button>
+              <!-- Modal de Fusão -->
+            <div id="merge-modal" class="modal">
+                <div class="fmodal-content">
+                    <h2>Deseja fundir essas 3 cartas?</h2>
+                    <div id="blue-border-cards">
+                        <!-- Aqui serão exibidas as cartas com borda azul -->
+                    </div>
+                    <div class="button-container">
+                        <button id="merge2-button">Sim</button>
+                        <button id="cancel-button">Cancelar</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    <script src="./src/js/script.js"></script> <!-- Link para seu arquivo de script JavaScript -->
+    <script src="./src/js/script.js"></script> 
 </body>
 </html>
 

@@ -87,6 +87,20 @@ body, h1, h2, h3, p {
     z-index: 1000;
 }
 
+.notification2 {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(9, 176, 241);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: "Outfit";
+    font-size: 16px;
+    z-index: 1000;
+}
+
 .notification-error {
     position: fixed;
     top: 10px;
@@ -130,6 +144,114 @@ body, h1, h2, h3, p {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease; 
+}
+
+#merge-button {
+    width: 200px;
+    background-color: #1D1D1D;
+    color: white;
+    padding: 10px 34px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#merge-button {
+    position: fixed;
+    bottom: 145px;
+    left: 50px;
+}
+
+#merge-button:hover {
+    background-color: rgb(9, 176, 241);
+}
+
+/* Estilo CSS para o novo modal */
+
+.fmodal-content {
+    border-radius: 6px;
+    background-color: #1D1D1D;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 15%; /* Ajuste a posição vertical do modal */
+    padding: 50px; /* Ajuste o espaçamento interno do modal */
+    text-align: center;
+    font-weight: bold;
+    font-family: "Outfit";
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento vertical entre os elementos */
+}
+
+h2 {
+    text-align: center;
+}
+
+#blue-border-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center; /* Centralize as cartas horizontalmente */
+    align-items: center; /* Centralize as cartas verticalmente */
+}
+
+#blue-border-cards .card {
+    margin-right: 3px;
+    width: 120px;
+    height: 160px;
+}
+
+#blue-border-cards:hover .card img  {
+    transform: none;
+    position: static; 
+    width: auto; 
+    height: auto; 
+}
+
+#blue-border-cards:hover .card {
+    transform: none; 
+    z-index: initial; 
+    box-shadow: none; 
+}
+
+#cancel-button {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #1a1717;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-left: 10px; /* Adicione uma margem à direita para distanciar os botões */
+}
+
+#cancel-button:hover {
+    background-color: #ff3c00;
+}
+
+#merge2-button {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #1a1717;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#merge2-button:hover {
+    background-color: rgb(9, 176, 241);
 }
 
 #exit:hover {
@@ -279,7 +401,7 @@ body, h1, h2, h3, p {
     color: white;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaçamento vertical entre os elementos */
+    gap: 10px; /* Espaçamento vertical entre os elementos */
 }
 
 
@@ -342,6 +464,7 @@ body, h1, h2, h3, p {
 #quit-button:hover {
     background: #e00d0d;
 }
+
 
 .health-bar-container {
     position: absolute;

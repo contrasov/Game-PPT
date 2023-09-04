@@ -239,7 +239,7 @@ function createBuyButton() {
     buyButton.addEventListener('click', () => {
         const playerCardCount = playerCardsElement.childElementCount;
 
-        if (playerScore > 3 && playerCardCount < 6 ) {
+        if (playerScore >= 3 && playerCardCount < 6 ) {
             const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
             const randomNumber = Math.floor(Math.random() * 10) + 1;
             const playerCard = createCard(randomType, randomNumber);

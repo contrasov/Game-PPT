@@ -171,7 +171,7 @@ function playRound(playerCard) {
     const isSpecialCard = playerCardType === 'Papel F' || playerCardType === 'Pedra F' || playerCardType === 'Tesoura F';
 
     if (result === 'player') {
-        cpuLife -= isSpecialCard ? 4 : 2;
+        cpuLife -= isSpecialCard ? 6 : 2;
         playerScore += 5;
         playerCard.classList.add('winner-card');
     } else if (result === 'cpu') {
@@ -239,13 +239,13 @@ function createBuyButton() {
     buyButton.addEventListener('click', () => {
         const playerCardCount = playerCardsElement.childElementCount;
 
-        if (playerScore > 0 && playerCardCount < 6 ) {
+        if (playerScore > 3 && playerCardCount < 6 ) {
             const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
             const randomNumber = Math.floor(Math.random() * 10) + 1;
             const playerCard = createCard(randomType, randomNumber);
             playerCards.push(playerCard);
             playerCardsElement.appendChild(playerCard);
-            playerScore -= 5;
+            playerScore -= 3;
             updatePlayerScore();
             checkAndHighlightPlayerCards();
 

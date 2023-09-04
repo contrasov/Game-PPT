@@ -11,11 +11,11 @@ const playTutorialButton = document.getElementById("tutorial");
 // Suponha que você tenha um objeto com as informações das atualizações
 const patchNotes = [
     {
-        version: "2.3.1",
+        version: "b_2.4",
         changes: ["Espaço das cartas no meio.", "Preço compra de cartas => 3 Pontos.", "Background Atualizado.","Home atualizada."]
     },
     {
-        version: "2.3.0",   
+        version: "b_2.3",   
         changes: ["Barra de vida.", "Cartas Especiais.", "Bordas Azuis cartas mesmo tipo."]
     }
 ];

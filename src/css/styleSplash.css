@@ -6,7 +6,7 @@ body, h1, button {
 }
 
 body {
-    background-image: url("/src/background/1.jpg");
+    background-image: url("/src/background/2.jpg");
     display: flex;
     justify-content: center;
     align-items: center;

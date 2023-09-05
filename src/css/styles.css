@@ -518,7 +518,7 @@ body, h1, h2, h3, p {
 
 /* Estilos de fundo */
 body {
-    background-color: #011329;
+    background-image: url('/src/background/1.png');
     background-size: cover;
     overflow: hidden;
     transform-origin: top;

@@ -22,8 +22,8 @@ body {
 /* Media query para telas médias (768px a 1366px de largura) */
 @media (min-width: 769px) and (max-width: 1366px) {
     .fundo {
-        margin-left: 250px;
-        margin-right: 250px;
+        margin-left: 300px;
+        margin-right: 300px;
     }
 }
 
@@ -131,6 +131,7 @@ header {
     color: rgb(255, 255, 255);
     text-align: center;
     padding: 20px;
+    margin-left: 20px;
 }
 
 header p {
@@ -145,7 +146,6 @@ a {
 
 /* Estilo básico para os ícones */
 .icones a {
-    text-decoration: none; /* Remove sublinhado dos links */
     margin-right: 20px; /* Espaçamento entre os ícones */
     font-size: 32px; /* Tamanho dos ícones */
     color: #ffffff; /* Cor dos ícones (pode personalizar) */
@@ -162,4 +162,54 @@ a {
 
 .icones a:hover i.fa-twitter {
     color: #1DA1F2; /* Cor ao passar o mouse sobre o Twitter */
+}
+
+.container-login {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-login h2 {
+    color: #f5c247;
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+label > span {
+    width: 100px; /* Largura do espaço para o nome de usuário e senha */
+    text-align: right; /* Alinhe o texto à direita para o rótulo */
+    margin-right: 10px; /* Adicione algum espaço à direita para separar o rótulo do campo de entrada */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color: #0056b3;
 }

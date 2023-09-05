@@ -1,16 +1,41 @@
 body {
     font-family: 'Outfit', sans-serif; /* Define 'Outfit' como a fonte padrão */
-    margin-left: 300px;
-    margin-right: 300px;
     background-image: url("/src/background/3.png");
     justify-content: center; /* Centralize horizontalmente */
     align-items: center; /* Centralize verticalmente */
 }
 
+/* Estilos para .fundo padrão */
 .fundo {
     background-color: #111111;
     margin: auto;
 }
+
+/* Media query para telas pequenas (até 768px de largura ou 1366px de altura) */
+@media (max-width: 768px), (max-height: 1366px) {
+    .fundo {
+        margin-left: 5px; /* Aumente o valor da margem esquerda para celular */
+        margin-right: 5px; /* Aumente o valor da margem direita para celular */
+    }
+}
+
+/* Media query para telas médias (768px a 1366px de largura) */
+@media (min-width: 769px) and (max-width: 1366px) {
+    .fundo {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+}
+
+/* Media query para telas grandes (acima de 1366px de largura) */
+@media (min-width: 1367px) {
+    .fundo {
+        margin-left: 400px;
+        margin-right: 400px;
+    }
+}
+
+
 
 /* Estilos para a navbar */
 .navbar {

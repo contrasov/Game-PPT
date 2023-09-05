@@ -5,23 +5,49 @@
     <link rel="icon" href="/src/fav/favicon.ico" type="image/x-icon">
     <title>Menu Inicial</title>
     <link rel="stylesheet" href="./src/css/styleSplash.css"> <!-- Link para seu arquivo de estilos CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="card1"></div>
-    <div class="card2"></div>
-    <div class="card3"></div>
-    <div class="container">
-        <h1>Bem-vindo!</h1>
-        <button id="start">Iniciar jogo</button>
-        <button id="tutorial">Como jogar</button>
+    <div class="fundo"> <!-- Container "fundo" -->
+        <div class="navbar">
+            <a href="https://game-ppt.vercel.app/">Início</a>
+            <a href="#Cartas">Cartas</a>
+            <a href="https://tan-albacore-f98.notion.site/Tutorial-PPT-bb9e0ab88cf04bc8884e6d8417bf36bb?pvs=4" target="_blank">Documentação</a>
+            <!-- Adicione mais links conforme necessário -->
+        </div>
+
+        <div class="container">
+            <h2>Desafie a CPU em um jogo de pedra, papel e tesoura!</h2> 
+            <p>Use estratégia e sorte para vencer! Desenvolvido por uma única pessoa, este jogo tenta oferecer diversão e desafio em um formato acessível.</p>  
+            <p>Jogue agora e prove sua habilidade!</p> 
+            <button id="start">Iniciar jogo</button>
+            <!-- Adicione outros elementos, como logotipo ou animações, se desejar -->
+        </div>
+        <div class="patch-note2">
+            <p>Notas de Atualização</p>
+            <h3 class="textsub">Update v2.3 - 4 Set, 2023</h3>
+            <ul>
+                <li class="point">Novo site home para o game.</li>
+                <li class="point">Exibir espaço no meio para cartas.</li>
+                <li class="point">Preço compra de cartas => 3 Pontos.</li>
+            </ul>
+        </div>
+        
+        <header>
+            <div class="icones">
+                <a href="https://discord.gg/6ncHuaQuU"><i class="fab fa-discord"></i></a>
+                <a href="https://www.linkedin.com/in/%C3%A1lvaro-santos-669354203/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/sleep_ze"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>©contrasov - 2023</p>
+            <!-- Adicione conteúdo do cabeçalho aqui -->
+        </header>
+
         <!-- Adicione outros elementos, como logotipo ou animações, se desejar -->
-    </div>
-    <div id="patch-note">
-    <h2>Notas de Atualização</h2>
-    <ul>
-    </ul>
-</div>
-    <!-- Adicione outros elementos, como logotipo ou animações, se desejar -->
-    <script src="./src/js/scriptSplash.js"></script> <!-- Link para seu arquivo de script JavaScript -->
+
+        <script src="./src/js/scriptSplash.js"></script> <!-- Link para seu arquivo de script JavaScript -->
+    </div> <!-- Fim do container "fundo" -->
 </body>
 </html>

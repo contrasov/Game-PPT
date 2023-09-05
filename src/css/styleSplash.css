@@ -1,92 +1,145 @@
-/* Estilize sua tela de inicialização aqui */
-
-body, h1, button {
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    background-image: url("/src/background/2.jpg");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    backdrop-filter: blur(10px);
+    font-family: 'Outfit', sans-serif; /* Define 'Outfit' como a fonte padrão */
+    margin-left: 300px;
+    margin-right: 300px;
+    background-image: url("/src/background/3.png");
+    justify-content: center; /* Centralize horizontalmente */
+    align-items: center; /* Centralize verticalmente */
+}
+
+.fundo {
+    background-color: #111111;
+    margin: auto;
+}
+
+/* Estilos para a navbar */
+.navbar {
+    background-color: #33333300;
     overflow: hidden;
+    margin: 10px auto; /* Centralize horizontalmente */
 }
 
-.container {
-    height: 200px;
-    width: 300px;
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
     text-align: center;
-    background-color: #111111; /* Cor de fundo preta */
-    border: 2px solid #000913; /* Borda branca ao redor do patch note */
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    border-radius: 2px;
+    background-color: #0fcecd;
+    color: black;
+}
+
+/* Estilos para a classe container */
+.container {
+    text-align: center;
+    padding: 50px;
+    margin: 50px auto; /* Margem de 50px no topo/baixo e automática nas laterais */
+    max-width: 800px; /* Define a largura máxima para o conteúdo */
+}
+
+.container p {
+    color: white;
+    font-size: 20px;
+    text-align: left; /* Centraliza o texto horizontalmente */
+    line-height: 1.5; /* Espaçamento entre as linhas */
+}
+
+.container h2 {
+    color: #f5c247;
+    font-size: 24px;
+    text-align: left; /* Centraliza o texto horizontalmente */
+}
+
+
+
+.container button {
+    background-color: #282828;
+    color: white;
+    border: 2px solid #ccc;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 6px;
+}
+
+.container button:hover {
+    background-color: #09b0f1;
+    color: black;
+}
+
+/* Estilos para a seção de notas de atualização */
+
+.patch-note2 {
+    border-radius: 6px;
+    background-color: #111111;
     padding: 20px;
-    border-radius: 10px;
+    margin: 20px;
+    border: 2px solid #ccc;
 }
 
-/* Estilos para o patch note */
-#patch-note {
-    position: fixed;
-    right: 100px;
-    width: 300px;
-    padding: 20px;
-    overflow-y: auto;
-    max-height: 80vh; /* Defina uma altura máxima em relação à altura da janela de visualização */
-    background-color: #111111; 
-    border: 2px solid #000913; 
-    border-radius: 5px; /* Borda arredondada */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-    color: #ffffffff; 
-}
-
-/* Estilos para a lista de patch notes */
-#patch-note ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#patch-note li {
-    margin-bottom: 20px;
-}
-
-#patch-note h2 {
-    margin-top: 0;
-}
-
-/* Espaçamento entre as atualizações */
-#patch-note li:not(:last-child) {
+.patch-note2 h3 {
+    color: #0fcecd;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
+.patch-note2 ul {
+    color: white;
+    list-style-type: disc;
+    margin-left: 20px;
+}
 
-h1 {
-    color: #ffffff;
-    font-size: 32px;
+.patch-note2 p {
+    color: #f5c247;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #ffffff00;
+    color: rgb(255, 255, 255);
     text-align: center;
-    margin-bottom: 20px;
+    padding: 20px;
 }
 
-button {
-    width: 200px;
-    background-color: #282828; /* Fundo branco */
-    color: #ffffff; /* Texto roxo */
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    margin: 5px 0;
-    border-radius: 5px;
-    cursor: pointer;
+header p {
+    margin-right: 20px;
+}
+
+/* Estilos gerais para links */
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 
-
-button:hover {
-    background-color: #2ca37f; /* Fundo roxo */
-    color: #ffffff; /* Texto branco */
+/* Estilo básico para os ícones */
+.icones a {
+    text-decoration: none; /* Remove sublinhado dos links */
+    margin-right: 20px; /* Espaçamento entre os ícones */
+    font-size: 32px; /* Tamanho dos ícones */
+    color: #ffffff; /* Cor dos ícones (pode personalizar) */
 }
 
-#tutorial:hover {
-    color: antiquewhite;
+/* Estilo de hover para os ícones (opcional) */
+.icones a:hover {
+    color: #0077B5; /* Cor ao passar o mouse sobre o LinkedIn */
 }
+
+.icones a:hover i.fa-discord {
+    color: #7289DA; /* Cor ao passar o mouse sobre o Discord */
+}
+
+.icones a:hover i.fa-twitter {
+    color: #1DA1F2; /* Cor ao passar o mouse sobre o Twitter */
+}
+

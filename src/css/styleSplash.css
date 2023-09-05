@@ -41,7 +41,6 @@ body {
 .navbar {
     background-color: #33333300;
     overflow: hidden;
-    margin: 10px auto; /* Centralize horizontalmente */
 }
 
 .navbar a {
@@ -93,6 +92,8 @@ body {
     border-radius: 6px;
 }
 
+
+
 .container button:hover {
     background-color: #09b0f1;
     color: black;
@@ -141,11 +142,6 @@ a {
     text-decoration: none;
     color: #007bff;
 }
-
-a:hover {
-    text-decoration: underline;
-}
-
 
 /* Estilo básico para os ícones */
 .icones a {
